@@ -1,10 +1,11 @@
 package com.est14.autoscolombia.Repository.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "tipo_novedad")
 @Entity
-public class TipoNovedad {
+public class TipoNovedad implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -3,7 +3,7 @@ package com.est14.autoscolombia.Repository.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "")
+@Table(name = "tipo_vehiculo")
 public class TipoVehiculo {
 
     @Id

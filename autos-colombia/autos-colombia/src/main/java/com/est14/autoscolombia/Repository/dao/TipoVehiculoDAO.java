@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface TipoVehiculoDAO extends JpaRepository<Integer, TipoVehiculo> {
+public interface TipoVehiculoDAO extends JpaRepository<TipoVehiculo, Integer> {
 
     Optional<TipoVehiculo> findById(Integer id);
-    void save(TipoVehiculo tipoVehiculo);
+
 }

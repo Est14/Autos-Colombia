@@ -1,12 +1,17 @@
 package com.est14.autoscolombia.Repository.entities;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Table(name = "vehiculo")
 @Entity
-public class Vehiculo {
+public class Vehiculo implements Serializable {
 
     @Id
     @Column(name = "id_vehiculo")
@@ -24,11 +29,13 @@ public class Vehiculo {
     @JoinColumn(name = "tipo", updatable = false, insertable = false)
     private TipoVehiculo tipo;
 
-    @OneToMany(mappedBy = "vehiculo")
-    private List<Novedad> novedades;
+    //@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "vehiculo")
+    //private List<Novedad> novedades;
 
-    @OneToMany(mappedBy = "vehiculo")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "vehiculo")
     private List<EntradaSalida> entradaSalidaList;
+
+
 
 
     public TipoVehiculo getTipo() {
@@ -39,13 +46,9 @@ public class Vehiculo {
         this.tipo = tipo;
     }
 
-    public List<Novedad> getNovedades() {
-        return novedades;
-    }
+    //public List<Novedad> getNovedades() {return novedades;}
 
-    public void setNovedades(List<Novedad> novedades) {
-        this.novedades = novedades;
-    }
+    //public void setNovedades(List<Novedad> novedades) {this.novedades = novedades;}
 
     public List<EntradaSalida> getEntradaSalidaList() {
         return entradaSalidaList;
